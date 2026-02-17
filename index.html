@@ -1,105 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculatrice Complète</title>
-<link rel="manifest" href="manifest.json">
-<style>
-body {
-  margin: 0;
-  background: #000;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.calculator {
-  width: 340px;
-  background: #111;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.screen {
-  background: #000;
-  color: #0f0;
-  font-size: 32px;
-  text-align: right;
-  padding: 15px;
-  border-radius: 10px;
-  min-height: 60px;
-  word-wrap: break-word;
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 15px;
-}
-
-button {
-  padding: 18px;
-  font-size: 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.num { background: #333; color: #fff; }
-.op  { background: #ff9500; color: #fff; }
-.func{ background: #555; color: #fff; }
-.eq  { background: #34c759; color: #fff; }
-</style>
-</head>
-
-<body>
-
-<div class="calculator">
-  <div class="screen" id="screen">0</div>
-
-  <div class="buttons">
-    <button class="func" onclick="clearAll()">C</button>
-    <button class="func" onclick="backspace()">⌫</button>
-    <button class="func" onclick="append('%')">%</button>
-    <button class="op" onclick="append('/')">÷</button>
-
-    <button class="num" onclick="append('7')">7</button>
-    <button class="num" onclick="append('8')">8</button>
-    <button class="num" onclick="append('9')">9</button>
-    <button class="op" onclick="append('*')">×</button>
-
-    <button class="num" onclick="append('4')">4</button>
-    <button class="num" onclick="append('5')">5</button>
-    <button class="num" onclick="append('6')">6</button>
-    <button class="op" onclick="append('-')">−</button>
-
-    <button class="num" onclick="append('1')">1</button>
-    <button class="num" onclick="append('2')">2</button>
-    <button class="num" onclick="append('3')">3</button>
-    <button class="op" onclick="append('+')">+</button>
-
-    <button class="func" onclick="append('(')">(</button>
-    <button class="func" onclick="append(')')">)</button>
-    <button class="num" onclick="append('.')">.</button>
-    <button class="eq" onclick="calculate()">=</button>
-  </div>
-</div>
-
-<script>
-let screen = document.getElementById("screen");
-let expression = "";
-
-function append(value) {
-  if (screen.innerText === "0" || screen.innerText === "Erreur") {
-    expression = "";
-  }
-  expression += value;
-  screen.innerText = expression;
-}
 
 function clearAll() {
   expression = "";
@@ -109,31 +7,111 @@ function clearAll() {
 function backspace() {
   expression = expression.slice(0, -1);
   screen.innerText = expression || "0";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculatrice Scientifique</title>
+<link rel="manifest" href="manifest.json">
+<style>
+body { margin:0; font-family: Arial; background: #111; display:flex; justify-content:center; align-items:center; height:100vh; }
+.calculator { width: 380px; background:#222; border-radius:15px; padding:15px; }
+.screen { background:#000; color:#0f0; font-size:28px; text-align:right; padding:15px; border-radius:10px; min-height:60px; word-wrap: break-word; }
+.buttons { display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; margin-top:10px; }
+button { padding:14px; font-size:16px; border:none; border-radius:10px; cursor:pointer; color:#fff; }
+.num { background:#333; } .op { background:#ff9500; } .func { background:#555; } .eq { background:#34c759; grid-column: span 2; }
+</style>
+</head>
+<body>
+<div class="calculator">
+<div class="screen" id="screen">0</div>
+<div class="buttons">
+<button class="func" onclick="clearAll()">C</button>
+<button class="func" onclick="backspace()">⌫</button>
+<button class="func" onclick="append('%')">%</button>
+<button class="op" onclick="append('/')">÷</button>
+<button class="op" onclick="append('*')">×</button>
+<button class="op" onclick="append('^')">xʸ</button>
+
+<button class="num" onclick="append('7')">7</button>
+<button class="num" onclick="append('8')">8</button>
+<button class="num" onclick="append('9')">9</button>
+<button class="op" onclick="append('-')">−</button>
+<button class="func" onclick="append('√(')">√</button>
+<button class="func" onclick="append('(')">(</button>
+
+<button class="num" onclick="append('4')">4</button>
+<button class="num" onclick="append('5')">5</button>
+<button class="num" onclick="append('6')">6</button>
+<button class="op" onclick="append('+')">+</button>
+<button class="func" onclick="append(')')">)</button>
+<button class="func" onclick="append('pi')">π</button>
+
+<button class="num" onclick="append('1')">1</button>
+<button class="num" onclick="append('2')">2</button>
+<button class="num" onclick="append('3')">3</button>
+<button class="func" onclick="append('sin(')">sin</button>
+<button class="func" onclick="append('cos(')">cos</button>
+<button class="func" onclick="append('tan(')">tan</button>
+
+<button class="num" onclick="append('0')">0</button>
+<button class="num" onclick="append('.')">.</button>
+<button class="func" onclick="append('e')">e</button>
+<button class="func" onclick="append('log(')">log</button>
+<button class="func" onclick="append('ln(')">ln</button>
+<button class="eq" onclick="calculate()">=</button>
+</div>
+</div>
+
+<script>
+let screen = document.getElementById('screen');
+let expression = "";
+
+function append(value) {
+  if(screen.innerText==="0"||screen.innerText==="Erreur") expression="";
+  expression += value;
+  screen.innerText = expression;
+}
+function clearAll(){expression=""; screen.innerText="0";}
+function backspace(){expression=expression.slice(0,-1); screen.innerText=expression||"0";}
+
+function calculate(){
+  try{
+    let exp = expression
+      .replace(/÷/g,"/")
+      .replace(/×/g,"*")
+      .replace(/π/g, Math.PI)
+      .replace(/e/g, Math.E)
+      .replace(/√\(/g,"Math.sqrt(")
+      .replace(/sin\(/g,"Math.sin(")
+      .replace(/cos\(/g,"Math.cos(")
+      .replace(/tan\(/g,"Math.tan(")
+      .replace(/log\(/g,"Math.log10(")
+      .replace(/ln\(/g,"Math.log(")
+      .replace(/\^/g,"**")
+      .replace(/(\d+)%/g,"($1/100)");
+
+    let result = Function('"use strict";return ('+exp+')')();
+    if(!isFinite(result)) throw "Erreur";
+    screen.innerText=result;
+    expression=result.toString();
+  } catch { screen.innerText="Erreur"; expression=""; }
 }
 
-function calculate() {
-  try {
-    let exp = expression.replace(/÷/g, "/").replace(/×/g, "*");
-
-    // Gestion du pourcentage
-    exp = exp.replace(/(\d+)%/g, "($1/100)");
-
-    let result = Function('"use strict";return (' + exp + ')')();
-
-    if (!isFinite(result)) throw "Erreur";
-    screen.innerText = result;
-    expression = result.toString();
-  } catch {
-    screen.innerText = "Erreur";
-    expression = "";
-  }
+// Service Worker registration
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js')
+  .then(()=>console.log('Service Worker enregistré'))
+  .catch(err=>console.log('Erreur Service Worker:',err));
 }
 </script>
+  </script>
   <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
   </script>
-
+  
 </body>
 </html>
